@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_100">
+
+
+    <TextView
+        android:id="@+id/titulo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aldrich"
+        android:gravity="center"
+        android:text="Agregar"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:layout_constraintVertical_bias="0.063" />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aldrich"
+        android:gravity="center"
+        android:text="Dots"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/etLugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:autofillHints=""
+        android:background="@drawable/ic_cr_gris2"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Lugar"
+        android:inputType="textCapSentences"
+        android:minHeight="48dp"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@+id/etWifiName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+
+    <EditText
+        android:id="@+id/etWifiName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:autofillHints=""
+        android:background="@drawable/ic_cr_gris2"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Nombre de la red"
+        android:inputType="textCapSentences"
+        android:minHeight="48dp"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+
+    <EditText
+        android:id="@+id/etWifiPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:autofillHints=""
+        android:background="@drawable/ic_cr_gris2"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Contraseña"
+        android:inputType="textCapSentences"
+        android:minHeight="48dp"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etWifiName" />
+
+    <android.widget.Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_cr_gris"
+        android:drawableStart="@drawable/ic_plugicon"
+        android:onClick="goMain"
+        android:text="Add Dots"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:layout_constraintVertical_bias="0.86" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="cian_200">#73E6F4</color>
+    <color name="cian_500">#00E3FF</color>
+    <color name="cian_100">#C0F8FF</color>
+    <color name="yellow">#fdfd96</color>
+    <color name="pink">#fdcae1</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey_200">#7E7E7E</color>
+    <color name="grey_500">#505050</color>
+</resources>
