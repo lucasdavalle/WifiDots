@@ -186,7 +186,7 @@
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/ic_cr_cian"
         android:gravity="center"
-        android:onClick="DeleteDots"
+        android:onClick="sendTimeESP"
         android:paddingVertical="1dp"
         android:text="@string/programar_btn"
         android:textSize="12sp"

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.EditText
+import android.widget.Toast
 import java.util.Calendar
 
 class ProgramDots : AppCompatActivity() {
@@ -38,7 +39,7 @@ class ProgramDots : AppCompatActivity() {
         etHoraA.setText(time)
     }
     private fun sendTimeESP(){
-        
+        Toast.makeText(this,"En Desarrollo",Toast.LENGTH_LONG).show()
     }
 }
 /*
