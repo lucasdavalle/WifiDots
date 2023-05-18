@@ -38,6 +38,9 @@ class ProgramDots : AppCompatActivity() {
     private fun onTimeSelectedA(time: String) {
         etHoraA.setText(time)
     }
+    fun onclick(view: View){
+        sendTimeESP()
+    }
     private fun sendTimeESP(){
         Toast.makeText(this,"En Desarrollo",Toast.LENGTH_LONG).show()
     }
@@ -47,4 +50,5 @@ class ProgramDots : AppCompatActivity() {
    luego el Esp con la libreir Time va a estar consultando siempre la hora para saber si conside con la hora que guardo programada por la app y si conside va a
    hacer un pull en la base de datos cambiando el stado de la base, esa y la tecla va a ser la unica forma de hacer un pull y mientras no se haga un pull va a estar
    actualizando siempre el estado del Dots.
+   Actualmente solo esta la programacion por hora, implemetar cuando cambia ubicacion y ejecucion
  */

@@ -1,5 +1,6 @@
 package com.example.safesporting
 
+import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -61,7 +62,7 @@ class DeleteDots : AppCompatActivity() {
                         .collection("Dots").document(spSuprDots.selectedItem.toString())
                         .delete()
                         .addOnSuccessListener {
-                            Toast.makeText(this,
+                            ToAast.makeText(this,
                                 "Dots eliminado con exito",
                                 Toast.LENGTH_SHORT).show()
                         }

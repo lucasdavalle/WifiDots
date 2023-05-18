@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titulo2"
-        android:background="@drawable/ic_cr_gris2">
+        android:background="@drawable/ic_squarewhite_stroke">
         <TableRow>
 
             <TextView
@@ -141,7 +141,7 @@
         android:layout_width="220sp"
         android:layout_height="wrap_content"
         android:autofillHints=""
-        android:background="@drawable/ic_cr_gris2"
+        android:background="@drawable/ic_squarewhite_stroke"
         android:clickable="false"
         android:ems="10"
         android:focusable="false"
@@ -168,7 +168,7 @@
         android:inputType="time"
         android:minHeight="48dp"
         android:textColorHint="#757575"
-        android:background="@drawable/ic_cr_gris2"
+        android:background="@drawable/ic_squarewhite_stroke"
         android:clickable="false"
         android:focusable="false"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -184,9 +184,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:background="@drawable/ic_cr_cian"
+        android:background="@drawable/ic_squarecian"
         android:gravity="center"
-        android:onClick="sendTimeESP"
+        android:onClick="onclick"
         android:paddingVertical="1dp"
         android:text="@string/programar_btn"
         android:textSize="12sp"

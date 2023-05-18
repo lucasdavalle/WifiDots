@@ -8,7 +8,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 
 class AddDots : AppCompatActivity() {
     lateinit var addDots: Button
@@ -30,6 +33,7 @@ class AddDots : AppCompatActivity() {
         val next = Intent(this, MainActivity::class.java)
         var dbRegister = FirebaseFirestore.getInstance()
         val currentUser = FirebaseAuth.getInstance().currentUser
+        var database = FirebaseDatabase.getInstance().getReference()
         if (currentUser != null) {
             if (!lugarTexto.text.isNullOrEmpty()) {
                 dbRegister.collection("users").document(currentUser.email.toString())

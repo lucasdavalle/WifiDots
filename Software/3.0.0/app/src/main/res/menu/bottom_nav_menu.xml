@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_HOME"
+        android:icon="@drawable/ic_plugicon"
+        android:title="Home" />
+    <item
+        android:id="@+id/navigation_ADD"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Agregar Dots" />
+
+    <item
+        android:id="@+id/navigation_DELETE"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="Eliminar Dots" />
+
+
+    <item
+        android:id="@+id/navigation_PROGR"
+        android:icon="@android:drawable/ic_lock_idle_alarm"
+        android:title="Programar Dots" />
+
+
+</menu>

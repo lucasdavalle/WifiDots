@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeleteDots"
-    android:background="@color/grey_100">
+    android:background="@color/grey_100"
+    tools:context=".DeleteDots">
 
     <TextView
         android:id="@+id/titulo"
@@ -39,9 +39,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
+
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="40sp"
         android:gravity="center"
@@ -49,23 +50,11 @@
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/Delete"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/texto"
+        app:layout_constraintVertical_bias="0.5"
         tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/cuadrado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30sp"
-        android:background="@drawable/ic_cr_gris"
-        android:fontFamily="@font/aldrich"
-        android:gravity="center"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinner" />
 
     <TextView
         android:id="@+id/texto"
@@ -86,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:background="@drawable/ic_cr_cian"
+        android:background="@drawable/ic_squarecian"
         android:gravity="center"
         android:onClick="DeleteDots"
         android:paddingVertical="1dp"
