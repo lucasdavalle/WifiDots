@@ -55,7 +55,7 @@ class SignIn : AppCompatActivity() {
 
         //Google
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken("544935354865-6l6ejgi561tg7heumtqq3bla6jbvoj1o.apps.googleusercontent.com")
             .requestEmail()
             .build()
 
@@ -79,13 +79,16 @@ class SignIn : AppCompatActivity() {
         userMail = email
         provideSeccion = provider
         val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+        intent.putExtra("Mail", email)
+        if (email != null)
+            startActivity(intent)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
     fun SignInGoogle(view: View) {
         signInGogle()
     }
+
     private fun signInGogle() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -94,6 +97,7 @@ class SignIn : AppCompatActivity() {
     fun login(view: View) {
         loginUser()
     }
+
     private fun loginUser() {
         var validacion: Int = 0
         if (etEmail.text.isNullOrEmpty() || !etEmail.text.contains("@") || !etEmail.text.contains("."))
@@ -102,7 +106,7 @@ class SignIn : AppCompatActivity() {
             email = etEmail.text.toString()
             validacion++
         }
-        if (etPassword.text.isNullOrEmpty()||etPassword.text.length<6)
+        if (etPassword.text.isNullOrEmpty() || etPassword.text.length < 6)
             Toast.makeText(this, "Contraseña no valida", Toast.LENGTH_SHORT).show()
         else {
             password = etPassword.text.toString()
@@ -124,6 +128,7 @@ class SignIn : AppCompatActivity() {
     fun registro(view: View) {
         registroUser()
     }
+
     private fun registroUser() {
         val intent = Intent(this, Registro::class.java)
         startActivity(intent)
@@ -133,6 +138,7 @@ class SignIn : AppCompatActivity() {
     fun forgotPass(view: View) {
         forgotPassword()
     }
+
     private fun forgotPassword() {
         val intent = Intent(this, ForgotPass::class.java)
         startActivity(intent)
@@ -155,6 +161,7 @@ class SignIn : AppCompatActivity() {
             }
         }
     }
+
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credential)
@@ -171,12 +178,13 @@ class SignIn : AppCompatActivity() {
                 }
             }
     }
+
     private fun updateUI(user: FirebaseUser?) {
         val currentUser = FirebaseAuth.getInstance().currentUser
         val currentUserG = auth.currentUser
-        if (currentUser != null )
+        if (currentUser != null)
             goHome(currentUser.email.toString(), currentUser.providerId)
-        if (currentUserG!=null)
+        if (currentUserG != null)
             goHome(currentUserG.email.toString(), currentUserG.providerId)
     }
 }

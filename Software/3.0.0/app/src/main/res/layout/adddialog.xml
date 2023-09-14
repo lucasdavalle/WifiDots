@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_squarewhite_padding20"
+    >
+    <TextView
+        android:id="@+id/tvAletTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Informacion"
+        android:textSize="20dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:layout_gravity="center"
+        android:padding="10dp" />
+    <TextView
+        android:id="@+id/tvAletText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Se va a abrir el navegador, cuando la pagina termine de cargar vuelva a la app"
+        android:textSize="15dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:textSize="10dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:text="Ok"
+        android:background="@drawable/ic_squaregris"
+        android:padding="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="15dp"
+        android:fontFamily="@font/open_sans_semibold"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+</LinearLayout>

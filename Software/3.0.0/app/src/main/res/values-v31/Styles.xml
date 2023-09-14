@@ -6,12 +6,12 @@
     </style>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
-        <item name="android:windowSplashScreenAnimatedIcon">@color/colorAccent</item>
-        <item name="android:windowSplashScreenBackground">@color/colorAccent</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@color/colorPrimary</item>
+        <item name="android:windowSplashScreenBackground">@color/colorPrimary</item>
 
-        <item name="colorPrimary">#012B80</item>
-        <item name="colorPrimaryDark">#000C24</item>
-        <item name="colorAccent">#4F8AFF</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">#FAB61E</item>
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

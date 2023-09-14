@@ -37,5 +37,7 @@
     <string name="hora_de_encendido"> Hora de Encendido </string>
     <string name="hora_de_apagado"> Hora de Apagado </string>
     <string name="programar_btn">Programar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

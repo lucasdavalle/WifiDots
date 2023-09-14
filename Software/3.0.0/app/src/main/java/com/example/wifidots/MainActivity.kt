@@ -1,6 +1,7 @@
 package com.example.wifidots
 
 
+import android.accounts.Account
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.Switch
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.FragmentTransaction
@@ -20,18 +22,22 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.Date
 import java.text.SimpleDateFormat
 import androidx.fragment.app.commit
+import com.example.wifidots.SignIn.Companion.userMail
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var fragment: FrameLayout
 
-
+    companion object {
+        lateinit var uMail: String
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        uMail = intent.getStringExtra("Mail").toString()
         val homeFragment = home()
         supportFragmentManager.beginTransaction()
             .replace(R.id.fl_wapper, homeFragment)
@@ -43,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_ADD -> AddDot()
                 R.id.navigation_DELETE -> DeleteDOT()
                 R.id.navigation_PROGR -> ProgramDot()
+                //R.id.navigation_ACCOUNT -> Account()
                 else -> null
             }
 

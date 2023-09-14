@@ -3,23 +3,57 @@
 
     <item
         android:id="@+id/navigation_HOME"
-        android:icon="@drawable/ic_plugicon"
+        android:icon="@drawable/ic_icon_plug"
         android:title="Home" />
+
     <item
         android:id="@+id/navigation_ADD"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/ic_icon_add"
         android:title="Agregar Dots" />
 
     <item
         android:id="@+id/navigation_DELETE"
-        android:icon="@android:drawable/ic_menu_delete"
+        android:icon="@drawable/ic_icon_delete"
         android:title="Eliminar Dots" />
 
 
     <item
         android:id="@+id/navigation_PROGR"
-        android:icon="@android:drawable/ic_lock_idle_alarm"
+        android:icon="@drawable/ic_icon_alarm"
         android:title="Programar Dots" />
+    <!--
+    <item
+        android:id="@+id/navigation_ACCOUNT"
+        android:icon="@drawable/ic_icon_account"
+        android:title="Cuenta" />
 
+      PRUEBA EDI
+    <item
+        android:id="@+id/navigation_HOME"
+        android:icon="@drawable/home_outline"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_ADD"
+        android:icon="@drawable/message"
+        android:title="Consulta" />
+
+    <item
+        android:id="@+id/navigation_DELETE"
+        android:icon="@drawable/account_supervisor_circle"
+        android:title="Autogestion" />
+
+
+    <item
+        android:id="@+id/navigation_PROGR"
+        android:icon="@drawable/account_tie"
+        android:title="Directivos y Jefes" />
+
+
+    <item
+        android:id="@+id/navigation_ACCOUNT"
+        android:icon="@drawable/menu"
+        android:title="Menu" />
+        -->
 
 </menu>
