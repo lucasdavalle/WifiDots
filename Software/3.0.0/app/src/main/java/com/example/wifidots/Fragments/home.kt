@@ -1,4 +1,4 @@
-package com.example.wifidots
+package com.example.wifidots.Fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,7 +6,6 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,22 +13,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Switch
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import com.example.wifidots.MainActivity
 import com.example.wifidots.MainActivity.Companion.uMail
+import com.example.wifidots.R
+import com.example.wifidots.Login.SignIn
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.time.LocalTime
 
 
 class home : Fragment() {
@@ -41,6 +40,7 @@ class home : Fragment() {
     lateinit var btCerraSecion: Button
     var countDots: Int = 0
     private lateinit var inflatedView: View
+    private val switchIdsMap = mutableMapOf<String, Int>()
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
@@ -58,7 +58,10 @@ class home : Fragment() {
         lySettings = view.findViewById(R.id.lySetting)
 
         if (getFirebaseCollections(name.substringBefore("@")))
+        {
             showMyLinearLayoutUp(view, 1500)
+            getFirebaseCollections(name.substringBefore("@"),switchIdsMap)
+        }
         btComprar.setOnClickListener {
             val url = "https://www.example.com"
             val intent = Intent(Intent.ACTION_VIEW)
@@ -93,10 +96,11 @@ class home : Fragment() {
                     val collectionName = childSnapshot.key
                     val Estado = childSnapshot.child("Estado").getValue()
                     val Dispositivo = childSnapshot.child("Dispositivo").getValue()
-                    addSwitch(collectionName.toString(),
+                    val switchId = addSwitch(collectionName.toString(),
                         Estado.toString().toBoolean(),
                         Dispositivo.toString().toInt(),
                         inflatedView)
+                    switchIdsMap[collectionName.toString()] = switchId
                     Log.d("Coleciones", collectionName.toString())
                     Log.d("Estado", Estado.toString())
                     Log.d("Dispositivo", Dispositivo.toString())
@@ -111,7 +115,48 @@ class home : Fragment() {
         return true
     }
 
-    private fun addSwitch(Name: String, Estado: Boolean, Imagen: Int, view: View) {
+    fun getFirebaseCollections(mail: String, switchIdsMap: MutableMap<String, Int>) {
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.getReference(mail + "/" + "Dots")
+
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (childSnapshot in dataSnapshot.children) {
+                    val collectionName = childSnapshot.key
+                    val Estado = childSnapshot.child("Estado").getValue()
+                    val Dispositivo = childSnapshot.child("Dispositivo").getValue()
+
+                    // Obtener el ID del switch desde el mapa
+                    val switchId = switchIdsMap[collectionName.toString()]
+
+                    if (switchId != null) {
+                        // Encontrar el switch por su ID
+                        val switch = view?.findViewById<Switch>(switchId)
+
+                        // Comparar el estado de la colección con el estado del switch
+                        if (switch != null && Estado != null) {
+                            val switchEstado = switch.isChecked
+                            if (Estado.toString().toBoolean() != switchEstado) {
+                                // Si los estados son diferentes, actualiza el estado del switch
+                                switch.isChecked = Estado.toString().toBoolean()
+                            }
+                        }
+                    }
+
+                    Log.d("Coleciones", collectionName.toString())
+                    Log.d("Estado", Estado.toString())
+                    Log.d("Dispositivo", Dispositivo.toString())
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("Error reading collections:", databaseError.message)
+            }
+        })
+    }
+
+
+    private fun addSwitch(Name: String, Estado: Boolean, Imagen: Int, view: View): Int {
         Layout = view.findViewById<LinearLayout>(R.id.lineSwitch)
         val database = FirebaseDatabase.getInstance()
         val reference = database.getReference(uMail.substringBefore("@") + "/" + "Dots/"+Name+"/Estado")
@@ -154,6 +199,7 @@ class home : Fragment() {
                 reference.setValue(false)
             }
         }
+        return newSwitch.id;
     }
 
     private fun signOut() {

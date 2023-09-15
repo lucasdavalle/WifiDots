@@ -1,22 +1,23 @@
-package com.example.wifidots
+package com.example.wifidots.Fragments
 
-import android.app.LauncherActivity
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.ActivityInfo
-import android.content.pm.LauncherActivityInfo
 import android.os.Bundle
-import android.provider.Settings.Global
 import android.util.Log
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.fragment.app.FragmentActivity
+import com.example.wifidots.MainActivity
+import com.example.wifidots.R
+import com.example.wifidots.TimePickerFragment
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class ProgramDot : Fragment() {
@@ -57,10 +58,30 @@ class ProgramDot : Fragment() {
         etHoraA.setOnClickListener { showTimePickerDialogA() }
         Programar.setOnClickListener { sendTimeESP() }
 
-        agregarObjetosAlSpinner(listOf("Patio", "Terraza"))
+        getFirebaseCollections(MainActivity.uMail.substringBefore("@")) { nombresObjetos ->
+            agregarObjetosAlSpinner(nombresObjetos)
+        }
         return view
     }
 
+    fun getFirebaseCollections(mail: String, callback: (List<String>) -> Unit) {
+        val database = FirebaseDatabase.getInstance()
+        val reference = database.getReference("$mail/Dots")
+        val nombresObjetos: MutableList<String> = mutableListOf()
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (childSnapshot in dataSnapshot.children) {
+                    nombresObjetos.add(childSnapshot.key.toString())
+                }
+                callback(nombresObjetos)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                Log.d("Error reading collections:", databaseError.message)
+            }
+        })
+    }
     private fun agregarObjetosAlSpinner(nombresObjetos: List<String>) {
         val adapter: ArrayAdapter<String> =
             ArrayAdapter(requireContext(), R.layout.spiner, nombresObjetos)

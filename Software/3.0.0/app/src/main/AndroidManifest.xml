@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".Splash"
+            android:name=".Login.Splash"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
@@ -32,21 +32,21 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ForgotPass"
+            android:name=".Login.ForgotPass"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SignIn"
+            android:name=".Login.SignIn"
             android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Registro"
+            android:name=".Login.Registro"
             android:exported="false"
             android:windowSoftInputMode="adjustPan">
             <meta-data

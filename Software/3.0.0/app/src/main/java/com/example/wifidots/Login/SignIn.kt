@@ -1,4 +1,4 @@
-package com.example.wifidots
+package com.example.wifidots.Login
 
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -9,6 +9,8 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.wifidots.MainActivity
+import com.example.wifidots.R
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient

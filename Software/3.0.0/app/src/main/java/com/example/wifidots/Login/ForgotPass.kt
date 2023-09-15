@@ -1,4 +1,4 @@
-package com.example.wifidots
+package com.example.wifidots.Login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.example.wifidots.R
 import com.google.firebase.auth.FirebaseAuth
 
 class ForgotPass : AppCompatActivity() {
@@ -45,6 +46,6 @@ class ForgotPass : AppCompatActivity() {
     fun goSignIn(){
         val intent = Intent(this, SignIn::class.java)
         startActivity(intent)
-        overridePendingTransition(R.anim.fade_in,R.anim.fade_out)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 }

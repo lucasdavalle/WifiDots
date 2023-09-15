@@ -1,31 +1,19 @@
 package com.example.wifidots
 
 
-import android.accounts.Account
 import android.content.Intent
-import android.graphics.Typeface
 import android.os.Bundle
-import android.text.TextUtils.replace
-import androidx.fragment.app.Fragment
-import android.view.View
-import android.view.animation.TranslateAnimation
 import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.Switch
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.add
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.util.Date
-import java.text.SimpleDateFormat
-import androidx.fragment.app.commit
-import com.example.wifidots.SignIn.Companion.userMail
+import com.example.wifidots.Fragments.AddDot
+import com.example.wifidots.Fragments.DeleteDOT
+import com.example.wifidots.Fragments.ProgramDot
+import com.example.wifidots.Fragments.home
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AddDot.OnGoHomeListener {
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var fragment: FrameLayout
 
@@ -33,18 +21,24 @@ class MainActivity : AppCompatActivity() {
         lateinit var uMail: String
     }
 
+    // Agrega una variable para llevar el seguimiento del fragmento actual
+    private var currentFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         uMail = intent.getStringExtra("Mail").toString()
+
+        // Establece el fragmento inicial y la variable currentFragment
         val homeFragment = home()
         supportFragmentManager.beginTransaction()
             .replace(R.id.fl_wapper, homeFragment)
             .commit()
-        bottomNavigationView=findViewById(R.id.nav_view)
+        currentFragment = homeFragment
+
+        bottomNavigationView = findViewById(R.id.nav_view)
         bottomNavigationView.setOnItemSelectedListener { item ->
-            val fragment = when(item.itemId){
+            val newFragment = when (item.itemId) {
                 R.id.navigation_HOME -> home()
                 R.id.navigation_ADD -> AddDot()
                 R.id.navigation_DELETE -> DeleteDOT()
@@ -53,17 +47,26 @@ class MainActivity : AppCompatActivity() {
                 else -> null
             }
 
-            fragment?.let {
+            newFragment?.let {
                 supportFragmentManager.beginTransaction()
                     .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
                     .replace(R.id.fl_wapper, it)
                     .commit()
+                currentFragment = it // Actualiza el fragmento actual
             }
 
             return@setOnItemSelectedListener true
         }
-
     }
 
-
+    override fun onBackPressed() {
+        val startMain = Intent(Intent.ACTION_MAIN)
+        startMain.addCategory(Intent.CATEGORY_HOME)
+        startMain.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(startMain)
+    }
+    override fun onGoHome() {
+        bottomNavigationView.selectedItemId = R.id.navigation_HOME
+    }
 }
+

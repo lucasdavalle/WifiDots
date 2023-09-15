@@ -1,4 +1,4 @@
-package com.example.wifidots
+package com.example.wifidots.Fragments
 
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -9,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.wifidots.MainActivity
+import com.example.wifidots.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import org.checkerframework.common.subtyping.qual.Bottom
 
 class DeleteDOT : Fragment() {
     private lateinit var spinner: Spinner
